@@ -1,0 +1,45 @@
+
+uart:
+  id: meter_uart
+  tx_pin: GPIO17  
+  rx_pin: GPIO16  
+  baud_rate: 9600  # Обязательно 9600 для оптического порта!
+  parity: NONE
+  stop_bits: 1
+  data_bits: 8
+
+external_components:
+  - source:
+      type: local
+      path: ext_components
+    components: [ sem_meter ]
+    refresh: 0s
+ 
+   
+sem_meter:
+  address: 000 # Адрес вашего счетчика
+  password: "00000"
+  update_interval: 30s
+
+  sensors:
+    - name: "Energy_T1"
+      id: ehergy_t
+      command: "E"
+      device_class: energy
+      state_class: measurement
+      unit_of_measurement: "kWh"
+      accuracy_decimals: 3
+    
+    - name: "Power"
+      id: power
+      command: "=M"
+      device_class: power
+      state_class: measurement
+      unit_of_measurement: "W"
+      accuracy_decimals: 0
+      icon: "mdi:gauge"
+    
+    - name: "Time Test"
+      id: time_test
+      command: "D"
+      icon: "mdi:clock"
