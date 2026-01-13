@@ -34,7 +34,5 @@ async def to_code(config):
     
     if CONF_SENSORS in config:
         for sensor_config in config[CONF_SENSORS]:
-            # Создаем сенсор
             sens = await sensor.new_sensor(sensor_config)
-            # Добавляем сенсор в компонент
             cg.add(var.add_sensor(sens, sensor_config[CONF_COMMAND]))
