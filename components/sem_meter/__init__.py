@@ -3,6 +3,7 @@ import esphome.config_validation as cv
 from esphome.components import uart, sensor
 from esphome.const import CONF_ID, CONF_ADDRESS, CONF_PASSWORD
 
+CODEOWNERS = ["@YuryMCV"]
 DEPENDENCIES = ["uart"]
 AUTO_LOAD = ["sensor"]
 
